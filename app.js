@@ -30,4 +30,4 @@ let edad = cuartoNumero - quintoNumero;
 
 alert(`El resultado de la resta es ${edad}. El primer dígito es el número que elegiste y los últimos dos dígitos son tu edad actual o la edad que cumplirás este año!`);
 
-alert("¡Gracias por jugar!");
+alert("¡Gracias por jugar! :)");
