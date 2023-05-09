@@ -38,12 +38,12 @@ alert("¡Gracias por jugar! :)");
 let n = parseInt(prompt("Ingresa un número del 1 al 9 para saber su tabla de multiplicación!"));
 let tabla = [];
 
-for (let i = 0; i <= 10 ; i++) {
+for (let i = 1; i <= 10 ; i++) {
     tabla.push(n * i); 
 }
 
 let cond2 = () => {    
-    if (n > 10 || n <= 0) {
+    if (n > 10 || n < 1) {
         alert("El número ingresado es inválido. Por favor ingresa un número del 1 al 9.");
         n = parseInt(prompt("Ingresa un número del 1 al 9 para saber su tabla de multiplicación!"));
         cond();
