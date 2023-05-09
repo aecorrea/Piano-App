@@ -31,3 +31,26 @@ let edad = cuartoNumero - quintoNumero;
 alert(`El resultado de la resta es ${edad}. El primer dígito es el número que elegiste y los últimos dos dígitos son tu edad actual o la edad que cumplirás este año!`);
 
 alert("¡Gracias por jugar! :)");
+
+// Hice esta actividad como práctica cuando empezamos a ver prompts y alerts. No supe cómo meter un for al juego así que agrego 
+// un pequeño ejercicio acá abajo.
+
+let n = parseInt(prompt("Ingresa un número del 1 al 9 para saber su tabla de multiplicación!"));
+let tabla = [];
+
+for (let i = 0; i <= 10 ; i++) {
+    tabla.push(n * i); 
+}
+
+let cond2 = () => {    
+    if (n > 10 || n <= 0) {
+        alert("El número ingresado es inválido. Por favor ingresa un número del 1 al 9.");
+        n = parseInt(prompt("Ingresa un número del 1 al 9 para saber su tabla de multiplicación!"));
+        cond();
+    } else { alert(`La tabla de multiplicación de ${n} es ${tabla}`);
+}
+}
+
+cond2();
+
+alert("Gracias por participar!")
