@@ -154,16 +154,27 @@ const keyNotes = [
   },
 ];
 
+//ASIGNAR OBJECT DATA A CADA DIV 
+const keyDivs = document.querySelectorAll('.key');
+
+const keyJson = JSON.stringify(keyNotes);
+sessionStorage.setItem('keyNotes', keyJson);
+
+for (let i = 0; i < keyNotes.length; i++) {
+  keyDivs[i].dataset.keyObject = JSON.stringify(keyNotes[i]);
+  console.log(keyDivs[i]);
+}
+
 // ARRAY OF ONLY KEY NAMES
 const keyNames = keyNotes.map((note) => note.name);
 
 // MELODIES
 // Este es simplemente un banco de melodías para que el usuario pueda acceder.
-// La idea es desarrollarlo más adelante con el DOM.
+
 
 const songs = [
   {
-    title: "Happy Birthday",
+    title: "Feliz Cumpleaños",
     difficulty: "normal",
     notes: [
       keyNotes[0],
@@ -196,7 +207,7 @@ const songs = [
   },
 
   {
-    title: "Twinkle Twinkle Little Star",
+    title: "Estrellita",
     difficulty: "easy",
     notes: [
       keyNotes[0],
@@ -316,6 +327,70 @@ const songs = [
   },
 ];
 
+//ALMACENAR LOS OBJETOS DE LAS MELODIAS EN JSON Y LOCALSTORAGE
+const songJson = JSON.stringify(songs);
+localStorage.setItem('songs', songJson);
+
+let songNotesArr= [];
+
+//MOSTRAR LAS MELODÍAS EN EL LABEL 
+const songsTitle1 = document.getElementById('song-1');
+const songsTitle2 = document.getElementById('song-2');
+const songsTitle3 = document.getElementById('song-3');
+const songsTitle4 = document.getElementById('song-4');
+songsTitle1.innerText = songs[0].title;
+songsTitle2.innerText = songs[1].title;
+songsTitle3.innerText = songs[2].title;
+songsTitle4.innerText = songs[3].title;
+
+const songsNotes1 = document.getElementById('song-notes');
+const songsNotes2 = document.getElementById('song-notes');
+const songsNotes3 = document.getElementById('song-notes');
+const songsNotes4 = document.getElementById('song-notes');
+
+//FILTRAR SÓLO EL NOMBRE DE LAS NOTAS DE LAS MELODÍAS PARA MOSTRAR DEBAJO DEL LABEL
+const HBNotes = songs[0].notes.map((el) => el.name);
+const TTLSNotes = songs[1].notes.map((el) => el.name);
+const ITENotesNotes = songs[2].notes.map((el) => el.name);
+const QSHTTEVNotes = songs[3].notes.map((el) => el.name);
+
+
+// **CORREGIR** CUANDO SELECCIONE LAS CANCIONES EN EL LABEL, LAS NOTAS DE CADA CANCIÓN DEBERÍAN MOSTRARSE POR DEBAJO.
+// **POR EL MOMENTO SÓLO SE VE EL ÚLTIMO INNERTEXT
+songsNotes1.innerText = HBNotes;
+songsNotes2.innerText = TTLSNotes;
+songsNotes3.innerText = ITENotesNotes;
+songsNotes4.innerText = QSHTTEVNotes;
+ 
+
+
+//PLAY SOUND FUNCTION
+function playSound(filename) {
+  let snd = new Audio(`./tunes/${filename}.mp3`);
+  snd.play();
+};
+
+const fileNames = [
+  'C3', 'Db3', 'D3', 'Eb3', 'E3', 'F3', 'Gb3', 'G3', 'Ab3', 'A3', 'Bb3', 'B3',
+  'C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4',
+  'C5'
+];
+
+const noteDivs = document.querySelectorAll('.key');
+
+for(let i = 0; i<fileNames.length; i++) {
+  const note = fileNames[i];
+  const div = keyDivs[i];
+
+  div.addEventListener('click', function() {
+    playSound(note);
+  })
+}
+
+//VOLUME CONTROL
+
+
+
 //SEARCHING SONGS BY TITLE AND/OR DIFFICULTY
 //UN BUSCADOR DEL BANCO DE MELODÍAS. TODAVÍA EL USUARIO NO TIENE ACCESO A ESTO. ES SÓLO PARA MOSTRAR EL MÉTODO USADO.
 
@@ -325,30 +400,31 @@ console.log(result);
 const result2 = songs.map((el) => el.difficulty);
 console.log(result);
 
-//USER SONGS
+//USER SONGS (A DESARROLLAR. NECESITO DESARROLLAR LA FUNCIONALIDAD DE UN BOTÓN DE GRABAR Y QUE SE 
+// ALMACENE LA INFORMACIÓN DE LOS INPUTS QUE EL USUARIO CLICKEA EN UN NUEVO ARRAY)
 const newSong = [];
 
 //POR EL MOMENTO LAS NOTAS SE INGRESAN DE FORMA MANUAL DESDE UN PROMPT. CON EL DOM, LAS NOTAS VAN A SER INGRESADAS A TRAVÉS DE UN
 //PIANO ONLINE HECHO CON HTML Y CSS CON BOTONES COMO INPUTS.
 
-while (true) {
-  const noteInput = prompt(
-    'Seleccioná las notas de tu canción. Cuando termines, simplemente escribe "Salir".\n' +
-      keyNames.join("\n")
-  );
+// while (true) {
+//   const noteInput = prompt(
+//     'Seleccioná las notas de tu canción. Cuando termines, simplemente escribe "Salir".\n' +
+//       keyNames.join("\n")
+//   );
 
-  if (noteInput === "Salir") {
-    break;
-  } else if (!keyNames.includes(noteInput)) {
-    alert(
-      'Error: La nota ingresada no coincide con ninguna de las opciones mencionadas. Procura ingresarlas en mayúsculas y si ya terminaste, escribe "Salir" (La "S" es mayúscula). Por favor, intenta nuevamente.'
-    );
-  } else {
-    newSong.push(noteInput);
-  }
-}
+//   if (noteInput === "Salir") {
+//     break;
+//   } else if (!keyNames.includes(noteInput)) {
+//     alert(
+//       'Error: La nota ingresada no coincide con ninguna de las opciones mencionadas. Procura ingresarlas en mayúsculas y si ya terminaste, escribe "Salir" (La "S" es mayúscula). Por favor, intenta nuevamente.'
+//     );
+//   } else {
+//     newSong.push(noteInput);
+//   }
+// }
 
-const newUserSong = prompt("Dale un nombre a tu nueva canción!");
-alert(
-  `Tu nueva canción se llama ${newUserSong} y las notas de tu canción son ${newSong}`
-);
+// const newUserSong = prompt("Dale un nombre a tu nueva canción!");
+// alert(
+//   `Tu nueva canción se llama ${newUserSong} y las notas de tu canción son ${newSong}`
+// );

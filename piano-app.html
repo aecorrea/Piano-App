@@ -1,17 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Piano App</title>
-</head>
-<body>
-    <h1>CoderHouse JS Course</h1>
-    <h2>Piano App.</h2>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>Record your melody!</title>
+  </head>
+  <body>
+    <div class="title">
+        <h1>CoderHouse JS Course</h1>
+        <h2>Piano App.</h2>
+    </div>
+    <div class="flex">
+        
+
+      <header>
+        <div class="control volume-slider">
+          <span>Volume</span>
+          <input type="range" min="0" max="1" value="0.5" step="any" />
+        </div>
+        <!-- <div class="record-panel">
+            <input type="button" class="record" id="record">
+            <input type="button" class="record" id="stop">
+            <input type="button" class="record" id="play">
+        </div> -->
+      </header>
+      <div class="piano">
+        <div class="key white" id="C1"></div>
+        <div class="key black" id="C#1"></div>
+        <div class="key white" id="D1"></div>
+        <div class="key black" id="D#1"></div>
+        <div class="key white" id="E1"></div>
+        <div class="key white" id="F1"></div>
+        <div class="key black" id="F#1"></div>
+        <div class="key white" id="G1"></div>
+        <div class="key black" id="G#1"></div>
+        <div class="key white" id="A1"></div>
+        <div class="key black" id="A#1"></div>
+        <div class="key white" id="B1"></div>
+        <div class="key white" id="C2"></div>
+        <div class="key black" id="C#2"></div>
+        <div class="key white" id="D2"></div>
+        <div class="key black" id="D#2"></div>
+        <div class="key white" id="E2"></div>
+        <div class="key white" id="F2"></div>
+        <div class="key black" id="F#2"></div>
+        <div class="key white" id="G2"></div>
+        <div class="key black" id="G#2"></div>
+        <div class="key white" id="A2"></div>
+        <div class="key black" id="A#2"></div>
+        <div class="key white" id="B2"></div>
+        <div class="key white" id="C3"></div>
+      </div>
+    </div>
+
+    <label for="default-songs" class="default-songs">Elegí tu canción!</label>
+    <select name="default-songs" id="default">
+      <option id="song-1"></option>
+      <option id="song-2"></option>
+      <option id="song-3"></option>
+      <option id="song-4"></option>
+    </select>
+
+    <div id="song-notes"></div>
 
     <script src="./piano-app.js"></script>
-
-</body>
+  </body>
 </html>
