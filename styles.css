@@ -77,18 +77,6 @@ header input {
     accent-color: #fff;
 }
 
-/* input::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: #E8AA42;
-    transform: transtaleY(-50%);
-    transition: all 0.3s ease;
-} */
 
 .piano {
     display: flex;
@@ -98,9 +86,14 @@ header input {
 
 .piano .key {
     cursor: pointer;
-    /* user-select: none; */
     position: relative;
-    /* text-transform: uppercase; */
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+}
+
+.piano .key:active {
+    transform: perspective(150px) rotateX(5deg);
 }
 
 .piano .black {
@@ -110,12 +103,10 @@ header input {
     margin: 0 -22px 0 -22px;
     border-radius: 0 0 5px 5px;
     background: linear-gradient(#333, #000);
-}
-
-.piano .black.active {
     box-shadow: inset -5px -10px 10px rgba(255, 255, 255, 0.1);
     background: linear-gradient(to bottom, #000, #434343);
 }
+
 
 .piano .white {
     height: 230px;
@@ -123,12 +114,10 @@ header input {
     border-radius: 8px;
     border: 1px solid #000;
     background: linear-gradient(#fff 96%, #eee 4%);
-}
-
-.piano .white.active {
     box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to bottom, #fff 0%, #eee 100%);
 }
+
 
 .piano .key span {
     position: absolute;
@@ -146,6 +135,17 @@ header input {
 .piano .black span {
     bottom: 13px;
     color: #888888;
+}
+
+#song-notes {
+    border: 3px solid #025464;
+    display: block;
+    max-width: auto;
+    padding: 35px 40px;
+    border-radius: 15px;
+    /* align-items: center; */
+    text-align: center;
+
 }
 
 @media screen and (max-width: 820px) {
