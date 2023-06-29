@@ -32,30 +32,29 @@ body {
     margin-top: 10px;
 }
 
-.record {
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
+
+
+img {
+    max-width: 40px;
+    max-height: 40px;
+}
+button {
+    background-color: transparent;
+    border: 0.5px;
     cursor: pointer;
+    padding: 0;
+    transition: transform 0.3s;
 }
 
-#record {
-    background-color:red;
+button:active,
+button:focus {
+  transform: scale(0.95);
 }
 
-#stop {
-    border-radius: 0;
-}
-
-#play {
-    height: 0;
-    width: 0;
-    border-radius: 0;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 15px solid green;
-    background-color: #025464;
-}
+button:focus:not(:active) {
+    transform: none;
+    box-shadow: none;
+  }
 
 header .control {
     display: flex;
@@ -105,6 +104,7 @@ header input {
     background: linear-gradient(#333, #000);
     box-shadow: inset -5px -10px 10px rgba(255, 255, 255, 0.1);
     background: linear-gradient(to bottom, #000, #434343);
+    color: #fff !important;
 }
 
 
@@ -116,6 +116,7 @@ header input {
     background: linear-gradient(#fff 96%, #eee 4%);
     box-shadow: inset -5px 5px 20px rgba(0, 0, 0, 0.2);
     background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    color: black !important; 
 }
 
 
@@ -135,6 +136,13 @@ header input {
 .piano .black span {
     bottom: 13px;
     color: #888888;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 4px;
 }
 
 #song-notes {

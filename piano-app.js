@@ -1,41 +1,3 @@
-//SweetAlert Prompt. El usuario ingresa su nombre y se lo imprime sobre el piano.
-(async () => {
-
-  const ipAPI = '//api.ipify.org?format=json'
-
-  const inputValue = fetch(ipAPI)
-    .then(response => response.json())
-    .then(data => data.ip)
-  
-  const { value: userName } = await Swal.fire({
-    title: 'Ingresa tu Nombre',
-    input: 'text',
-    inputLabel: 'Tu Nombre',
-    inputValue: inputValue,
-    showCancelButton: true,
-    inputValidator: (value) => {
-      if (!value) {
-        return 'El campo está vacío. Ingresa tu nombre.'
-      }
-    }
-  })
-  
-  if (userName) {
-    Swal.fire(`Tu nombre es ${userName}`)
-  }
-  const name = document.querySelector('#user-name');
-  name.textContent = `${userName}`;
-  
-  
-  })()
-//PIANO KEYS CONSTRUCTOR
-function Keys(name, value, note, color) {
-  this.name = name;
-  this.value = value;
-  this.note = note;
-  this.color = color;
-}
-
 //PIANO KEYS
 const keyNotes = [
   {
@@ -187,12 +149,8 @@ const keyNotes = [
 //ASIGNAR OBJECT DATA A CADA DIV 
 const keyDivs = document.querySelectorAll('.key');
 
-const keyJson = JSON.stringify(keyNotes);
-sessionStorage.setItem('keyNotes', keyJson);
-
 for (let i = 0; i < keyNotes.length; i++) {
   keyDivs[i].dataset.keyObject = JSON.stringify(keyNotes[i]);
-  console.log(keyDivs[i]);
 }
 
 
@@ -200,169 +158,31 @@ for (let i = 0; i < keyNotes.length; i++) {
 const keyNames = keyNotes.map((note) => note.name);
 
 // MELODIES
-// Este es simplemente un banco de melodías para que el usuario pueda acceder.
+let songsList = JSON.parse(localStorage.getItem('songsList')) || [];
 
-
-const songs = [
-  {
-    title: "Feliz Cumpleaños",
-    difficulty: "normal",
-    notes: [
-      keyNotes[0],
-      keyNotes[0],
-      keyNotes[2],
-      keyNotes[0],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[0],
-      keyNotes[0],
-      keyNotes[2],
-      keyNotes[0],
-      keyNotes[7],
-      keyNotes[5],
-      keyNotes[0],
-      keyNotes[0],
-      keyNotes[12],
-      keyNotes[9],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[2],
-      keyNotes[10],
-      keyNotes[10],
-      keyNotes[9],
-      keyNotes[5],
-      keyNotes[7],
-      keyNotes[5],
-    ],
-  },
-
-  {
-    title: "Estrellita",
-    difficulty: "easy",
-    notes: [
-      keyNotes[0],
-      keyNotes[0],
-      keyNotes[7],
-      keyNotes[7],
-      keyNotes[9],
-      keyNotes[9],
-      keyNotes[7],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[4],
-      keyNotes[2],
-      keyNotes[2],
-      keyNotes[0],
-      keyNotes[7],
-      keyNotes[7],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[4],
-      keyNotes[2],
-      keyNotes[7],
-      keyNotes[7],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[4],
-      keyNotes[2],
-      keyNotes[0],
-      keyNotes[0],
-      keyNotes[7],
-      keyNotes[7],
-      keyNotes[9],
-      keyNotes[9],
-      keyNotes[7],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[4],
-      keyNotes[4],
-      keyNotes[2],
-      keyNotes[7],
-      keyNotes[0],
-    ],
-  },
-
-  {
-    title: "In The End",
-    difficulty: "normal",
-    notes: [
-      keyNotes[3],
-      keyNotes[10],
-      keyNotes[10],
-      keyNotes[6],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[6],
-      keyNotes[3],
-      keyNotes[10],
-      keyNotes[10],
-      keyNotes[6],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[6],
-      keyNotes[3],
-      keyNotes[10],
-      keyNotes[10],
-      keyNotes[6],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[5],
-      keyNotes[6],
-      keyNotes[3],
-      keyNotes[10],
-      keyNotes[10],
-      keyNotes[6],
-      keyNotes[5],
-    ],
-  },
-
-  {
-    title: "Quien Se Ha Tomado Todo El Vino",
-    difficulty: "hard",
-    notes: [
-      keyNotes[9],
-      keyNotes[12],
-      keyNotes[16],
-      keyNotes[9],
-      keyNotes[12],
-      keyNotes[16],
-      keyNotes[9],
-      keyNotes[12],
-      keyNotes[16],
-      keyNotes[14],
-      keyNotes[12],
-      keyNotes[11],
-      keyNotes[9],
-      keyNotes[7],
-      keyNotes[11],
-      keyNotes[14],
-      keyNotes[7],
-      keyNotes[11],
-      keyNotes[14],
-      keyNotes[7],
-      keyNotes[11],
-      keyNotes[14],
-      keyNotes[12],
-      keyNotes[14],
-      keyNotes[16],
-    ],
-  },
-];
-
+if(songsList.length === 0) {
+  fetch('./songs.json')
+    .then(f => f.json()
+      .then(data => {
+        if(data.length > 0) {
+          songsList = data;
+          localStorage.setItem('songsList', JSON.stringify(songsList));
+      }
+    })
+      .catch(error => {
+        console.log(error);
+      })
+    )
+      .catch(err => {
+        console.log(err);
+    });
+};
+console.log(songsList);
 //ALMACENAR LOS OBJETOS DE LAS MELODIAS EN JSON Y LOCALSTORAGE
-const songJson = JSON.stringify(songs);
-localStorage.setItem('songs', songJson);
+// const songJson = JSON.stringify(songs);
+// localStorage.setItem('songs', songJson);
 
-let songNotesArr= [];
+// let songNotesArr= [];
 
 //MOSTRAR LAS MELODÍAS EN EL LABEL 
 
@@ -370,20 +190,23 @@ const songsTitle1 = document.getElementById('song-1');
 const songsTitle2 = document.getElementById('song-2');
 const songsTitle3 = document.getElementById('song-3');
 const songsTitle4 = document.getElementById('song-4');
-songsTitle1.innerText = songs[0].title;
-songsTitle2.innerText = songs[1].title;
-songsTitle3.innerText = songs[2].title;
-songsTitle4.innerText = songs[3].title;
+// const songsTitle5 = document.getElementById('song-5');
+
+songsTitle1.innerText = songsList[0].title;
+songsTitle2.innerText = songsList[1].title;
+songsTitle3.innerText = songsList[2].title;
+songsTitle4.innerText = songsList[3].title;
+// songsTitle5.innerText = songsList[4].title;
+
 
 const selectElement = document.getElementById('default');
 const songNotesDiv = document.getElementById('song-notes');
 
 selectElement.addEventListener('change', function() {
   
-  const selectedIndex = selectElement.selectedIndex;
-  const selectedSongNotes = songs[selectedIndex].notes;
-  const selectedSongNoteNames = selectedSongNotes.map((note) => note.name);
-  songNotesDiv.innerText = selectedSongNoteNames.join(' ');
+  const selectedIndex = selectElement.selectedIndex -1;
+  const selectedSongNotes = songsList[selectedIndex].notes;
+  songNotesDiv.innerText = selectedSongNotes.join(' ');
 });
 
 
@@ -410,22 +233,69 @@ for(let i = 0; i<fileNames.length; i++) {
   })
 }
 
-//VOLUME CONTROL
+
+//  USER SONGS
+//  FUNCIÓN DE BOTÓN DE GRABAR: SE ALMACENA LA INFORMACIÓN DE LOS INPUTS QUE EL USUARIO CLICKEA EN UN NUEVO ARRAY.
 
 
+let newSong = [];
+let recording = false;
 
-//SEARCHING SONGS BY TITLE AND/OR DIFFICULTY
-//UN BUSCADOR DEL BANCO DE MELODÍAS. TODAVÍA EL USUARIO NO TIENE ACCESO A ESTO. ES SÓLO PARA MOSTRAR EL MÉTODO USADO.
+const keys = document.querySelectorAll('.key');
 
-const result = songs.map((el) => el.title);
-console.log(result);
+keys.forEach(key => {
+  key.addEventListener('click', () => {
+    const note = key.getAttribute('id');
+    if (recording) {
+      if (newSong.length < 20) {
+        newSong.push(note);
+      }
+    }
+  });
+});
 
-const result2 = songs.map((el) => el.difficulty);
-console.log(result);
+const record = document.querySelectorAll('.record');
+record.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const event = btn.value;
+    if(event === 'start') {
+      recording = true;
+      console.log('toastify');
+    };
+    if (event === "finish") {
 
-//USER SONGS (A DESARROLLAR. NECESITO DESARROLLAR LA FUNCIONALIDAD DE UN BOTÓN DE GRABAR Y QUE SE 
-// ALMACENE LA INFORMACIÓN DE LOS INPUTS QUE EL USUARIO CLICKEA EN UN NUEVO ARRAY)
-const newSong = [];
+      Swal.fire({
+        title: 'Nueva canción',
+        html: `<input type="text" id="name" class="swal2-input" placeholder="Name">
 
+    `,
+        confirmButtonText: 'Crear',
+        focusConfirm: false,
+        preConfirm: () => {
+          const name = Swal.getPopup().querySelector('#name').value
+          if (!name) {
+            Swal.showValidationMessage(`Complete todos los campos`)
+          }
+          return { title: name, difficulty: 'custom', notes: newSong}
+        }
+      }).then((result) => {
+        addSong(result.value);
+        Swal.fire("Canción creada correctamente")
+        newSong = [];
+
+      });
+
+    console.log('RECORDING STOPPED');
+      recording = false;
+    }
+  })
+});
+
+
+const addSong = (song) => {
+  songsList.push(song);
+  localStorage.setItem('songsList', JSON.stringify(songsList));
+
+}
 
 

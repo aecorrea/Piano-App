@@ -7,10 +7,9 @@
     <script src="
 https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js
 "></script>
-<link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css
-" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
+    <link type="image/png" sizes="auto" rel="icon" href="./media/logo1-32.png">
     <title>Record your melody!</title>
   </head>
   <body>
@@ -23,51 +22,49 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css
 
       <header>
         <h2 id="user-name"></h2>
-        <div class="control volume-slider">
-          <span>Volume</span>
-          <input type="range" min="0" max="1" value="0.5" step="any" id="volume-control" />
+        <div class="record-panel">
+            <button type="button" class="record" id="record" value="start"><img src="./media/rec.png"></button>
+            <button type="button" class="record" id="stop" value="finish"><img src="./media/stop.png"></button>
+            <!-- <button type="button" class="record" id="play"><img src="./media/play.png"></button> -->
         </div>
-        <!-- <div class="record-panel">
-            <input type="button" class="record" id="record">
-            <input type="button" class="record" id="stop">
-            <input type="button" class="record" id="play">
-        </div> -->
       </header>
       <div class="piano">
-        <div class="key white" id="C1"></div>
-        <div class="key black" id="C#1"></div>
-        <div class="key white" id="D1"></div>
-        <div class="key black" id="D#1"></div>
-        <div class="key white" id="E1"></div>
-        <div class="key white" id="F1"></div>
-        <div class="key black" id="F#1"></div>
-        <div class="key white" id="G1"></div>
-        <div class="key black" id="G#1"></div>
-        <div class="key white" id="A1"></div>
-        <div class="key black" id="A#1"></div>
-        <div class="key white" id="B1"></div>
-        <div class="key white" id="C2"></div>
-        <div class="key black" id="C#2"></div>
-        <div class="key white" id="D2"></div>
-        <div class="key black" id="D#2"></div>
-        <div class="key white" id="E2"></div>
-        <div class="key white" id="F2"></div>
-        <div class="key black" id="F#2"></div>
-        <div class="key white" id="G2"></div>
-        <div class="key black" id="G#2"></div>
-        <div class="key white" id="A2"></div>
-        <div class="key black" id="A#2"></div>
-        <div class="key white" id="B2"></div>
-        <div class="key white" id="C3"></div>
+        <div class="key white" id="C1">C</div>
+        <div class="key black" id="C#1">C#</div>
+        <div class="key white" id="D1">D</div>
+        <div class="key black" id="D#1">D#</div>
+        <div class="key white" id="E1">E</div>
+        <div class="key white" id="F1">F</div>
+        <div class="key black" id="F#1">F#</div>
+        <div class="key white" id="G1">G</div>
+        <div class="key black" id="G#1">G#</div>
+        <div class="key white" id="A1">A</div>
+        <div class="key black" id="A#1">A#</div>
+        <div class="key white" id="B1">B</div>
+        <div class="key white" id="C2">C</div>
+        <div class="key black" id="C#2">C#</div>
+        <div class="key white" id="D2">D</div>
+        <div class="key black" id="D#2">D#</div>
+        <div class="key white" id="E2">E</div>
+        <div class="key white" id="F2">F</div>
+        <div class="key black" id="F#2">F#</div>
+        <div class="key white" id="G2">G</div>
+        <div class="key black" id="G#2">G#</div>
+        <div class="key white" id="A2">A</div>
+        <div class="key black" id="A#2">A#</div>
+        <div class="key white" id="B2">B</div>
+        <div class="key white" id="C3">C</div>
       </div>
     </div>
 
     <label for="default-songs" class="default-songs">Elegí tu canción!</label>
     <select name="default-songs" id="default">
+      <option disable-selected hidden>(Selecciona tu canción)</option>
       <option id="song-1"></option>
       <option id="song-2"></option>
       <option id="song-3"></option>
       <option id="song-4"></option>
+      <option id="song-5"></option>
     </select>
 
     <div id="song-notes"></div>
