@@ -177,26 +177,29 @@ if(songsList.length === 0) {
         console.log(err);
     });
 };
-console.log(songsList);
-//ALMACENAR LOS OBJETOS DE LAS MELODIAS EN JSON Y LOCALSTORAGE
-// const songJson = JSON.stringify(songs);
-// localStorage.setItem('songs', songJson);
+// console.log(songsList);
 
-// let songNotesArr= [];
 
 //MOSTRAR LAS MELODÍAS EN EL LABEL 
 
-const songsTitle1 = document.getElementById('song-1');
-const songsTitle2 = document.getElementById('song-2');
-const songsTitle3 = document.getElementById('song-3');
-const songsTitle4 = document.getElementById('song-4');
-// const songsTitle5 = document.getElementById('song-5');
+let container = document.getElementById("default");
 
-songsTitle1.innerText = songsList[0].title;
-songsTitle2.innerText = songsList[1].title;
-songsTitle3.innerText = songsList[2].title;
-songsTitle4.innerText = songsList[3].title;
-// songsTitle5.innerText = songsList[4].title;
+
+const showSongs = () => {
+
+let mensaje = "";
+
+songsList.forEach((el, idx) => {
+  mensaje += `<option value=${idx}>Canción: ${el.title} - Dificultad: ${el.difficulty}</option>
+  `
+});
+container.innerHTML = `
+  <select>
+      ${mensaje}
+  </select>
+`
+}
+showSongs();
 
 
 const selectElement = document.getElementById('default');
@@ -204,7 +207,7 @@ const songNotesDiv = document.getElementById('song-notes');
 
 selectElement.addEventListener('change', function() {
   
-  const selectedIndex = selectElement.selectedIndex -1;
+  const selectedIndex = selectElement.selectedIndex;
   const selectedSongNotes = songsList[selectedIndex].notes;
   songNotesDiv.innerText = selectedSongNotes.join(' ');
 });
@@ -260,9 +263,12 @@ record.forEach(btn => {
     const event = btn.value;
     if(event === 'start') {
       recording = true;
-      console.log('toastify');
+      Toastify({
+        text: "Grabando!",
+        duration: 3000
+      }).showToast();
     };
-    if (event === "finish") {
+    if (newSong.length > 0) {
 
       Swal.fire({
         title: 'Nueva canción',
@@ -276,7 +282,7 @@ record.forEach(btn => {
           if (!name) {
             Swal.showValidationMessage(`Complete todos los campos`)
           }
-          return { title: name, difficulty: 'custom', notes: newSong}
+          return { title: name, difficulty: 'Custom', notes: newSong}
         }
       }).then((result) => {
         addSong(result.value);
@@ -285,17 +291,23 @@ record.forEach(btn => {
 
       });
 
-    console.log('RECORDING STOPPED');
       recording = false;
+      Toastify({
+        text: "Grabación terminada!",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+        }
+      }).showToast();
+    
     }
   })
 });
 
-
 const addSong = (song) => {
   songsList.push(song);
   localStorage.setItem('songsList', JSON.stringify(songsList));
-
+  showSongs();
 }
 
 

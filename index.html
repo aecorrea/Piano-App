@@ -4,17 +4,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js
-"></script>
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
     <link type="image/png" sizes="auto" rel="icon" href="./media/logo1-32.png">
-    <title>Record your melody!</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <title>Piano App</title>
   </head>
   <body>
     <div class="title">
-        <h1>CoderHouse JS Course</h1>
+        <h1>Grabá tus melodías!</h1>
         <h2>Piano App.</h2>
     </div>
     <div class="flex">
@@ -59,7 +58,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js
 
     <label for="default-songs" class="default-songs">Elegí tu canción!</label>
     <select name="default-songs" id="default">
-      <option disable-selected hidden>(Selecciona tu canción)</option>
+      <option disable-selected hidden selected>(Selecciona tu canción)</option>
       <option id="song-1"></option>
       <option id="song-2"></option>
       <option id="song-3"></option>
@@ -70,6 +69,9 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js
     <div id="song-notes"></div>
 
     <script src="./piano-app.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
+
 
 
 
