@@ -10,7 +10,7 @@
 
 ###
 
-<p align="left">✨ Se proveen los archivos imprescindibles para la funcionalidad de la WebApp.<br>✨ Funcionalidades de cada elemento explicados con detalle en el código<br>✨ Entrega Final del curso de JavaScript de CODERHOUSE<br>✨ Se agradecen sugerencias y reportes en los medios de contacto provistos. </p>
+<p align="left">✨ Se proveen los archivos imprescindibles para la funcionalidad de la WebApp.<br>✨ Funcionalidades de cada elemento explicados con detalle en el código<br>✨ Entrega Final del curso de JavaScript de CODERHOUSE.<br>✨ Se agradecen sugerencias y reportes en los medios de contacto provistos. </p>
 
 <br>
 <br>
