@@ -15,7 +15,7 @@
 <br>
 <br>
 <br>
-###
+
 
 <h2 align="left">Acerca de mi</h2>
 
