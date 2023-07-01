@@ -292,7 +292,7 @@ record.forEach((btn) => {
     }
     if (newSong.length > 0) {
       Swal.fire({
-        title: "Nueva canción",
+        title: "Dale un nombre a tu canción:",
         html: `<input type="text" id="name" class="swal2-input" placeholder="Name">
 
     `,
