@@ -6,14 +6,18 @@
 
 ###
 
-<h2 align="left">Acerca de mi</h2>
+<h2 align="left">Acerca de Piano App</h2>
 
+###
+
+<p align="left">✨ Se proveen los archivos imprescindibles para la funcionalidad de la WebApp.<br>✨ Funcionalidades de cada elemento explicados con detalle en el código<br>✨ Entrega Final del curso de JavaScript de CODERHOUSE<br>✨ Se agradecen sugerencias y reportes en los medios de contacto provistos. </p>
+
+<br>
+<br>
+<br>
 ###
 
 <p align="left">✨ Codeando desde Febrero de 2022<br>📚 Actualmente estoy aprendiendo ReactJS, PHP y SQL.<br>🎯 Goals: Desenvolverme profesionalmente como desarrollador FullStack.<br>🎲 Fun fact: Antes de dedicarme a esto, me dedicaba a la música. Soy pianista y cantante!</p>
-
-###
-
 <h2 align="left">Las tecnologías y lenguajes en las que me estoy desarrollando actualmente son</h2>
 
 ###
