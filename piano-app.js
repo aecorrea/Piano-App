@@ -146,109 +146,120 @@ const keyNotes = [
   },
 ];
 
-//ASIGNAR OBJECT DATA A CADA DIV 
-const keyDivs = document.querySelectorAll('.key');
+//ASIGNAR OBJECT DATA A CADA DIV
+const keyDivs = document.querySelectorAll(".key");
 
 for (let i = 0; i < keyNotes.length; i++) {
   keyDivs[i].dataset.keyObject = JSON.stringify(keyNotes[i]);
 }
 
-
-// ARRAY OF ONLY KEY NAMES
-const keyNames = keyNotes.map((note) => note.name);
-
 // MELODIES
-let songsList = JSON.parse(localStorage.getItem('songsList')) || [];
+let songsList = JSON.parse(localStorage.getItem("songsList")) || [];
 
-if(songsList.length === 0) {
-  fetch('./songs.json')
-    .then(f => f.json()
-      .then(data => {
-        if(data.length > 0) {
-          songsList = data;
-          localStorage.setItem('songsList', JSON.stringify(songsList));
-      }
-    })
-      .catch(error => {
-        console.log(error);
-      })
+if (songsList.length === 0) {
+  fetch("./songs.json")
+    .then((f) =>
+      f
+        .json()
+        .then((data) => {
+          if (data.length > 0) {
+            songsList = data;
+            localStorage.setItem("songsList", JSON.stringify(songsList));
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
     )
-      .catch(err => {
-        console.log(err);
+    .catch((err) => {
+      console.log(err);
     });
-};
-// console.log(songsList);
+}
 
-
-//MOSTRAR LAS MELODÍAS EN EL LABEL 
+//MOSTRAR LAS MELODÍAS EN EL LABEL
 
 let container = document.getElementById("default");
 
-
 const showSongs = () => {
+  let mensaje = "";
 
-let mensaje = "";
-
-songsList.forEach((el, idx) => {
-  mensaje += `<option value=${idx}>Canción: ${el.title} - Dificultad: ${el.difficulty}</option>
-  `
-});
-container.innerHTML = `
+  songsList.forEach((el, idx) => {
+    mensaje += `<option value=${idx}>Canción: ${el.title} - Dificultad: ${el.difficulty}</option>
+  `;
+  });
+  container.innerHTML = `
   <select>
       ${mensaje}
   </select>
-`
-}
+`;
+};
 showSongs();
 
+const selectElement = document.getElementById("default");
+const songNotesDiv = document.getElementById("song-notes");
 
-const selectElement = document.getElementById('default');
-const songNotesDiv = document.getElementById('song-notes');
-
-selectElement.addEventListener('change', function() {
-  
+selectElement.addEventListener("change", function () {
   const selectedIndex = selectElement.selectedIndex;
   const selectedSongNotes = songsList[selectedIndex].notes;
-  songNotesDiv.innerText = selectedSongNotes.join(' ');
+  songNotesDiv.innerText = `Las notas de la melodía seleccionada son: 
+  ${selectedSongNotes.join(" ")}`;
 });
-
 
 //PLAY SOUND FUNCTION
 function playSound(filename) {
   let snd = new Audio(`./tunes/${filename}.mp3`);
   snd.play();
-};
+}
 
 const fileNames = [
-  'C3', 'Db3', 'D3', 'Eb3', 'E3', 'F3', 'Gb3', 'G3', 'Ab3', 'A3', 'Bb3', 'B3',
-  'C4', 'Db4', 'D4', 'Eb4', 'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4',
-  'C5'
+  "C3",
+  "Db3",
+  "D3",
+  "Eb3",
+  "E3",
+  "F3",
+  "Gb3",
+  "G3",
+  "Ab3",
+  "A3",
+  "Bb3",
+  "B3",
+  "C4",
+  "Db4",
+  "D4",
+  "Eb4",
+  "E4",
+  "F4",
+  "Gb4",
+  "G4",
+  "Ab4",
+  "A4",
+  "Bb4",
+  "B4",
+  "C5",
 ];
 
-const noteDivs = document.querySelectorAll('.key');
+const noteDivs = document.querySelectorAll(".key");
 
-for(let i = 0; i<fileNames.length; i++) {
+for (let i = 0; i < fileNames.length; i++) {
   const note = fileNames[i];
   const div = keyDivs[i];
 
-  div.addEventListener('click', function() {
+  div.addEventListener("click", function () {
     playSound(note);
-  })
+  });
 }
 
-
-//  USER SONGS
 //  FUNCIÓN DE BOTÓN DE GRABAR: SE ALMACENA LA INFORMACIÓN DE LOS INPUTS QUE EL USUARIO CLICKEA EN UN NUEVO ARRAY.
-
 
 let newSong = [];
 let recording = false;
 
-const keys = document.querySelectorAll('.key');
+const keys = document.querySelectorAll(".key");
 
-keys.forEach(key => {
-  key.addEventListener('click', () => {
-    const note = key.getAttribute('id');
+keys.forEach((key) => {
+  key.addEventListener("click", () => {
+    const note = key.getAttribute("id");
     if (recording) {
       if (newSong.length < 20) {
         newSong.push(note);
@@ -257,38 +268,36 @@ keys.forEach(key => {
   });
 });
 
-const record = document.querySelectorAll('.record');
-record.forEach(btn => {
-  btn.addEventListener('click', () => {
+const record = document.querySelectorAll(".record");
+record.forEach((btn) => {
+  btn.addEventListener("click", () => {
     const event = btn.value;
-    if(event === 'start') {
+    if (event === "start") {
       recording = true;
       Toastify({
         text: "Grabando!",
-        duration: 3000
+        duration: 3000,
       }).showToast();
-    };
+    }
     if (newSong.length > 0) {
-
       Swal.fire({
-        title: 'Nueva canción',
+        title: "Nueva canción",
         html: `<input type="text" id="name" class="swal2-input" placeholder="Name">
 
     `,
-        confirmButtonText: 'Crear',
+        confirmButtonText: "Crear",
         focusConfirm: false,
         preConfirm: () => {
-          const name = Swal.getPopup().querySelector('#name').value
-          if (!name) {
-            Swal.showValidationMessage(`Complete todos los campos`)
+          const name = Swal.getPopup().querySelector("#name").value;
+          if (!name || songsList.some((el) => el.title === name)) {
+            Swal.showValidationMessage(`Nombre inválido o repetido.`);
           }
-          return { title: name, difficulty: 'Custom', notes: newSong}
-        }
+          return { title: name, difficulty: "Custom", notes: newSong };
+        },
       }).then((result) => {
         addSong(result.value);
-        Swal.fire("Canción creada correctamente")
+        Swal.fire("Canción creada correctamente");
         newSong = [];
-
       });
 
       recording = false;
@@ -297,17 +306,45 @@ record.forEach(btn => {
         duration: 3000,
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
-        }
+        },
       }).showToast();
-    
     }
-  })
+  });
 });
 
 const addSong = (song) => {
   songsList.push(song);
-  localStorage.setItem('songsList', JSON.stringify(songsList));
+  localStorage.setItem("songsList", JSON.stringify(songsList));
   showSongs();
-}
+};
 
 
+//1-DELETE SONGS
+const deleteButton = document.getElementById("delete");
+deleteButton.addEventListener("click", () => {
+  const selectedIndex = selectElement.selectedIndex;
+  if (selectedIndex >= songsList.length || selectedIndex <= 3) {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "No puedes eliminar o modificar canciones por defecto.",
+    });
+  } else {
+    Swal.fire({
+      title: "Confirmar eliminación.",
+      text: `Estás por eliminar la canción ${songsList[selectedIndex].title}, ¿Deseas continuar?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        songsList.splice(selectedIndex, 1);
+        localStorage.setItem("songsList", JSON.stringify(songsList));
+        showSongs();
+        songNotesDiv.innerText = "";
+        Swal.fire("Eliminada!", "La canción seleccionada ha sido eliminada con éxito.", "success");
+      }
+    });
+  }
+});
