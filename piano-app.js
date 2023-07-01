@@ -1,3 +1,14 @@
+//INSTRUCCIONES DE USO
+Swal.fire({
+  title: 'Instrucciones de uso.',
+  text: "Para grabar: Presionar el botón 'grabar', tocar las notas con el mouse y luego presionar el botón de 'stop' para finalizar.",
+  icon: 'warning',
+  showCancelButton: false,
+  confirmButtonColor: '#3085d6',
+  confirmButtonText: 'Entendido!'
+});
+
+
 //PIANO KEYS
 const keyNotes = [
   {
