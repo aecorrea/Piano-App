@@ -1,29 +1,34 @@
-<h1 align="left">Hola! 👋 Cómo va?</h1>
+<h1 align="left">Hello there! 👋</h1>
 
 ###
 
-<p align="left">Mi nombre es Agustín y soy un estudiante de desarrollo FrontEnd React, de Córdoba, Argentina.</p>
+<p align="left">I'm a FrontEnd React developer from Córdoba, Argentina.</p>
 
 ###
 
-<h2 align="left">Acerca de Piano App</h2>
+<h2 align="left">About Piano App</h2>
 
 ###
 
-<p align="left">✨ Se proveen los archivos imprescindibles para la funcionalidad de la WebApp.<br>✨ Funcionalidades de cada elemento explicados con detalle en el código<br>✨ Entrega Final del curso de JavaScript de CODERHOUSE.<br>✨ Se agradecen sugerencias y reportes en los medios de contacto provistos. </p>
+<p align="left">✨ All essential files provided.<br>✨ Every element functionality is explained on the code.<br>✨ This WebApp is a final project made for the JavaScript course in CODERHOUSE.<br>✨ Feedback and reports will be deeply appreciated. Feel free to contact me for further information regarding the code and my services as a developer. 
+<br>
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/agustin-correa-851517136/)
+&nbsp;
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/aecorrea/)</p>
+
 
 <br>
 <br>
 <br>
 
 
-<h2 align="left">Acerca de mi</h2>
+<h2 align="left">About me</h2>
 
 ###
 
 
-<p align="left">✨ Codeando desde Febrero de 2022<br>📚 Actualmente estoy aprendiendo ReactJS, PHP y SQL.<br>🎯 Goals: Desenvolverme profesionalmente como desarrollador FullStack.<br>🎲 Fun fact: Antes de dedicarme a esto, me dedicaba a la música. Soy pianista y cantante!</p>
-<h2 align="left">Las tecnologías y lenguajes en las que me estoy desarrollando actualmente son</h2>
+<p align="left">✨Coding since February 2022<br>📚 Currently learning Next JS, TypeScript, GraphQL.<br>🎯 Goals: Learn and grow my career as a FullStack Developer specialized in FrontEnd.<br>🎲 Fun fact: Before immerse myself into the coding world, I was a proffessional musician! I'm a pianist and a singer!</p>
+<h2 align="left">Technologies I work with:</h2>
 
 ###
 
@@ -33,6 +38,9 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" height="40" width="52" alt="sass logo"  />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain-wordmark.svg" height="40" width="52" alt="graphql logo" />
+  
+          
 </div>
 
 ###
