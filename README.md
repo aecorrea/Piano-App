@@ -12,9 +12,9 @@
 
 <p align="left">✨ All essential files provided.<br>✨ Every element functionality is explained on the code.<br>✨ This WebApp is a final project made for the JavaScript course in CODERHOUSE.<br>✨ Feedback and reports will be deeply appreciated. Feel free to contact me for further information regarding the code and my services as a developer. 
 <br>
-[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/agustin-correa-851517136/)
+[Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/agustin-correa-851517136/)
 &nbsp;
-[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/aecorrea/)</p>
+[GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/aecorrea/)</p>
 
 
 <br>
@@ -39,7 +39,10 @@
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" width="52" alt="javascript logo"  />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" width="52" alt="react logo"  />
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain-wordmark.svg" height="40" width="52" alt="graphql logo" />
-  
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" height="40" width="52" alt="next logo"/>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg" height="40" width="52" alt="typescript logo"/>
+          
+          
           
 </div>
 
