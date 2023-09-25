@@ -11,12 +11,11 @@
 ###
 
 <p align="left">✨ All essential files provided.<br>✨ Every element functionality is explained on the code.<br>✨ This WebApp is a final project made for the JavaScript course in CODERHOUSE.<br>✨ Feedback and reports will be deeply appreciated. Feel free to contact me for further information regarding the code and my services as a developer. 
+</p>
 <br>
-[Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/agustin-correa-851517136/)
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/in/agustin-correa-851517136/)
 &nbsp;
-[GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/aecorrea/)</p>
-
-
+[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/aecorrea/)
 <br>
 <br>
 <br>
